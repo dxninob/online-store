@@ -90,7 +90,7 @@ class OrderController extends Controller
         $viewData = [];
         $viewData["title"] = "My Orders - Online Store";
         $viewData["subtitle"] =  "My Orders";
-        $viewData["orders"] = Order::with(['items.computer'])->where('user_id', Auth::user()->getId())->get();
+        $viewData["orders"] = Order::with(['itemsOrderComputer.computer'])->where('user_id', Auth::user()->getId())->get();
         return view('order.list')->with("viewData", $viewData);
     }
 }

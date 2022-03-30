@@ -19,8 +19,10 @@ class Computer extends Model
      * $this->attributes['price'] - int - contains the computer price
      * $this->attributes['created_at'] - timestamp - contains the computer creation date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
-     * $this->items - OrderComputer[] - contains the associated OrderComputer items
+     * $this->itemsOrderComputer - OrderComputer[] - contains the associated OrderComputer items
      */
+
+    protected $table = 'computers';
 
     public static function validate($request)
     {
@@ -145,18 +147,33 @@ class Computer extends Model
         $this->attributes['updated_at'] = $updatedAt;
     }
 
-    public function items()
+    public function itemsOrderComputer()
     {
         return $this->hasMany(OrderComputer::class);
     }
     
-    public function getItems()
+    public function getItemsOrderComputer()
     {
-        return $this->items;
+        return $this->itemsOrderComputer;
     }
 
-    public function setItems($items)
+    public function setItemsOrderComputer($itemsOrderComputer)
     {
-        $this->items = $items;
+        $this->itemsOrderComputer = $itemsOrderComputer;
+    }
+
+    public function itemsComputerCategory()
+    {
+        return $this->hasMany(ComputerCategory::class);
+    }
+
+    public function getItemsComputerCategory()
+    {
+        return $this->itemsComputerCategory;
+    }
+
+    public function setItemsComputerCategory($itemsComputerCategory)
+    {
+        $this->itemsComputerCategory = $itemsComputerCategory;
     }
 }

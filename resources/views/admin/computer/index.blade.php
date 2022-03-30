@@ -86,6 +86,16 @@
           &nbsp;
         </div>
       </div>
+
+      <fieldset>
+        <div class="mb-3">
+          <label for="categories">Categorias:</label><br>
+          @foreach($viewData["categories"] as $category)
+            <input type="checkbox" name="categories[]" value="{{ $category->getName() }}"> {{ $category->getName() }}<br />
+          @endforeach
+        </div>        
+      </fieldset>
+
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>

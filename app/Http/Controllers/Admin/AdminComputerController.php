@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Computer;
+use App\Models\Category;
+use App\Models\ComputerCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +16,7 @@ class AdminComputerController extends Controller
         $viewData = [];
         $viewData["title"] = "Admin Page - Computers - Online Store";
         $viewData["computers"] = Computer::all();
+        $viewData["categories"] = Category::all();
         return view('admin.computer.index')->with("viewData", $viewData);
     }
 
@@ -39,6 +42,16 @@ class AdminComputerController extends Controller
             );
             $newComputer->setImage($imageName);
             $newComputer->save();
+        }
+
+        $categories = $request->input('categories');
+        $newComputerId = $newComputer->getId();
+        foreach ($categories as $category) {
+            $item = new ComputerCategory();
+            $categoryIds = Category::where('name', $category)->get('id');
+            $item->setCategoryId($categoryIds[0]->id);
+            $item->setComputerId($newComputerId);
+            $item->save();
         }
 
         return back();

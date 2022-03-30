@@ -29,11 +29,18 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+    
     Route::get('/admin/computers', 'App\Http\Controllers\Admin\AdminComputerController@index')->name("admin.computer.index");
     Route::post('/admin/computers/store', 'App\Http\Controllers\Admin\AdminComputerController@store')->name("admin.computer.store");
     Route::delete('/admin/computers/{id}/delete', 'App\Http\Controllers\Admin\AdminComputerController@delete')->name("admin.computer.delete");
     Route::get('/admin/computers/{id}/edit', 'App\Http\Controllers\Admin\AdminComputerController@edit')->name("admin.computer.edit");
     Route::put('/admin/computers/{id}/update', 'App\Http\Controllers\Admin\AdminComputerController@update')->name("admin.computer.update");
+
+    Route::get('/admin/categories', 'App\Http\Controllers\Admin\AdminCategoryController@index')->name("admin.category.index");
+    Route::post('/admin/categories/store', 'App\Http\Controllers\Admin\AdminCategoryController@store')->name("admin.category.store");
+    Route::delete('/admin/categories/{id}/delete', 'App\Http\Controllers\Admin\AdminCategoryController@delete')->name("admin.category.delete");
+    Route::get('/admin/categories/{id}/edit', 'App\Http\Controllers\Admin\AdminCategoryController@edit')->name("admin.category.edit");
+    Route::put('/admin/categories/{id}/update', 'App\Http\Controllers\Admin\AdminCategoryController@update')->name("admin.category.update");
 });
 
 Auth::routes();
