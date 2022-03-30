@@ -32,17 +32,14 @@ class AdminComputerController extends Controller
         $newComputer->setStorage($request->input('storage'));
         $newComputer->setPrice($request->input('price'));
         $newComputer->setImage("game.png");
-        $newComputer->save();
 
-        if ($request->hasFile('image')) {
+        if ($request->has('image')) {
             $imageName = $newComputer->getId() . "." . $request->file('image')->extension();
-            Storage::disk('public')->put(
-                $imageName,
-                file_get_contents($request->file('image')->getRealPath())
-            );
             $newComputer->setImage($imageName);
-            $newComputer->save();
+            $request->image->move(public_path('images'), $imageName);
         }
+
+        $newComputer->save();
 
         $categories = $request->input('categories');
         $newComputerId = $newComputer->getId();
@@ -85,13 +82,10 @@ class AdminComputerController extends Controller
         $computer->setStorage($request->input('storage'));
         $computer->setPrice($request->input('price'));
 
-        if ($request->hasFile('image')) {
+        if ($request->has('image')) {
             $imageName = $computer->getId() . "." . $request->file('image')->extension();
-            Storage::disk('public')->put(
-                $imageName,
-                file_get_contents($request->file('image')->getRealPath())
-            );
             $computer->setImage($imageName);
+            $request->image->move(public_path('images'), $imageName);
         }
 
         $computer->save();

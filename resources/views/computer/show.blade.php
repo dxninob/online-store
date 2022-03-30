@@ -5,7 +5,7 @@
 <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ asset('/storage/'.$viewData['computer']->getImage()) }}" class="img-fluid rounded-start">
+      <img src="{{ asset('/images/'.$viewData['computer']->getImage()) }}" class="img-fluid rounded-start">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -38,7 +38,7 @@
           </div>
         </form>
         <br><a class="btn bg-primary text-white" href="https://api.whatsapp.com/send?text={{ $viewData['shareText'] }}{{ route('computer.show', ['id'=> $viewData['computer']->getId()]) }}">Compartir en Whatsapp</a>
-      </p>
+        </p>
       </div>
     </div>
   </div>
