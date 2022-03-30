@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('ram');
             $table->string('gpu');
             $table->string('storage');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('price');
             $table->timestamps();
         });
