@@ -11,8 +11,6 @@ class ComputerCategory extends Model
     /**
      * COMPUTERCATEGORY ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
-     * $this->attributes['quantity'] - int - contains the item quantity
-     * $this->attributes['price'] - int - contains the item price
      * $this->attributes['category_id'] - int - contains the referenced category id
      * $this->attributes['computer_id'] - int - contains the referenced computer id
      * $this->attributes['created_at'] - timestamp - contains the item creation date
