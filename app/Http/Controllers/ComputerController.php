@@ -8,12 +8,24 @@ use Illuminate\Http\Request;
 class ComputerController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $viewData = [];
         $viewData["title"] = "Computers - Online Store";
         $viewData["subtitle"] =  "List of computers";
         $viewData["computers"] = Computer::all();
+
+        $sort = $request->get('sort');
+
+        if ($sort != 'desc') {
+            $viewData["computers"] = Computer::orderBy('price', 'asc')->get();
+        }
+
+        if ($sort == 'desc') {
+            $viewData["computers"] = Computer::orderBy('price', 'desc')->get();
+        }
+
+
         return view('computer.index')->with("viewData", $viewData);
     }
 
@@ -21,8 +33,8 @@ class ComputerController extends Controller
     {
         $viewData = [];
         $computer = Computer::findOrFail($id);
-        $viewData["title"] = $computer->getName()." - Online Store";
-        $viewData["subtitle"] =  $computer->getName()." - Computer information";
+        $viewData["title"] = $computer->getName() . " - Online Store";
+        $viewData["subtitle"] =  $computer->getName() . " - Computer information";
         $viewData["computer"] = $computer;
         $viewData["shareText"] = "Te comparto este computador, creo que te podría interesar: ";
         return view('computer.show')->with("viewData", $viewData);
