@@ -7,11 +7,9 @@
       <p class="lead"><b>Total de ordenes:</b> {{ $viewData["totalOfOrders"] }}</p>
       <p class="lead"><b>Total vendido:</b> ${{ $viewData["totalSold"] }}</p>
     </div>
-    <div class="col-lg-4 me-auto">
-      <p class="lead"><b>Total de computadores vendidos por categoría:</b></p>
-      @foreach ($viewData["categories"] as $category)
-        <p class="lead">{{ $category->getName() }}: {{ $viewData["category_".$category] }}</p>
-      @endforeach
+    <div class="col-lg-4 ms-auto">
+      <p class="lead"><b>Precio promedio:</b> ${{ $viewData["averagePrice"] }}</p>
+      <p class="lead"><b>Número de categorias:</b> ${{ $viewData["totalCategories"] }}</p>
     </div>
   </div>
 </div>
