@@ -41,7 +41,7 @@ class Computer extends Model
     {
         $total = 0;
         foreach ($computers as $computer) {
-            $total = $total + ($computer->getPrice()*$computersInSession[$computer->getId()]);
+            $total = $total + ($computer->getPrice() * $computersInSession[$computer->getId()]);
         }
 
         return $total;
@@ -151,7 +151,7 @@ class Computer extends Model
     {
         return $this->hasMany(OrderComputer::class);
     }
-    
+
     public function getItemsOrderComputer()
     {
         return $this->itemsOrderComputer;
@@ -164,7 +164,7 @@ class Computer extends Model
 
     public function itemsComputerCategory()
     {
-        return $this->hasMany(ComputerCategory::class);
+        return $this->belongsToMany(Category::class, 'computer_category');
     }
 
     public function getItemsComputerCategory()

@@ -14,8 +14,7 @@
     </ul>
     @endif
 
-    <form method="POST" action="{{ route('admin.computer.update', ['id'=> $viewData['computer']->getId()]) }}"
-      enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.computer.update', ['id'=> $viewData['computer']->getId()]) }}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="row">
@@ -88,7 +87,16 @@
           &nbsp;
         </div>
       </div>
-      
+
+      <fieldset>
+        <div class="mb-3">
+          <label for="categories">Categorias:</label><br>
+          @foreach($viewData["categories"] as $category)
+          <input type="checkbox" name="categories[]" value="{{ $category->getName() }}"> {{ $category->getName() }}<br />
+          @endforeach
+        </div>
+      </fieldset>
+
       <button type="submit" class="btn btn-primary">Edit</button>
     </form>
   </div>

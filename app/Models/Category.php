@@ -57,7 +57,7 @@ class Category extends Model
 
     public function itemsComputerCategory()
     {
-        return $this->hasMany(ComputerCategory::class);
+        return $this->belongsToMany(Computer::class, 'computer_category');
     }
 
     public function getItemsComputerCategory()

@@ -16,7 +16,12 @@
         <p class="card-text">RAM: {{ $viewData["computer"]->getRam() }} GB</p>
         <p class="card-text">GPU: {{ $viewData["computer"]->getGpu() }}</p>
         <p class="card-text">Storage: {{ $viewData["computer"]->getStorage() }} GB</p>
-     
+
+        <p>Categorias:</p>
+        @foreach($viewData["computer"]->getItemsComputerCategory() as $category)
+        <p>- {{ $category->getName() }}</p>
+        @endforeach
+
         <p class="card-text">
         <form method="POST" action="{{ route('order.add', ['id'=> $viewData['computer']->getId()]) }}">
           <div class="row">

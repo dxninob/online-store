@@ -1,0 +1,5 @@
+id,name,email,password,role,balance
+1,Daniela Niño,daniela.niño@gmail.com,admin1234,admin,100000000
+2,Samuel Ceballos,samuel.ceballos@gmail.com,user1234,client,100000000
+3,Juan Pablo Madrid,juan.madrid@gmail.com,user1235,client,100000000
+4,Martin Villegas,martin.villegas@gmail.com,user1236,client,100000000

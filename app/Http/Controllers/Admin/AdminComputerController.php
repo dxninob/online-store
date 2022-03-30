@@ -35,7 +35,7 @@ class AdminComputerController extends Controller
         $newComputer->save();
 
         if ($request->hasFile('image')) {
-            $imageName = $newComputer->getId().".".$request->file('image')->extension();
+            $imageName = $newComputer->getId() . "." . $request->file('image')->extension();
             Storage::disk('public')->put(
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
@@ -68,6 +68,8 @@ class AdminComputerController extends Controller
         $viewData = [];
         $viewData["title"] = "Admin Page - Edit Computer - Online Store";
         $viewData["computer"] = Computer::findOrFail($id);
+        $viewData["categories"] = Category::all();
+
         return view('admin.computer.edit')->with("viewData", $viewData);
     }
 
@@ -84,7 +86,7 @@ class AdminComputerController extends Controller
         $computer->setPrice($request->input('price'));
 
         if ($request->hasFile('image')) {
-            $imageName = $computer->getId().".".$request->file('image')->extension();
+            $imageName = $computer->getId() . "." . $request->file('image')->extension();
             Storage::disk('public')->put(
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
@@ -93,6 +95,16 @@ class AdminComputerController extends Controller
         }
 
         $computer->save();
+
+        $categories = $request->input('categories');
+        $newComputerId = $computer->getId();
+        foreach ($categories as $category) {
+            $item = new ComputerCategory();
+            $categoryIds = Category::where('name', $category)->get('id');
+            $item->setCategoryId($categoryIds[0]->id);
+            $item->setComputerId($newComputerId);
+            $item->save();
+        }
         return redirect()->route('admin.computer.index');
     }
 }
