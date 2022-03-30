@@ -7,11 +7,12 @@
     <form action="{{ route('computer.index') }}">
       <label for="cars">Sort by:</label>
       <select name="sort" id="sort">
-        <option value="blanc"></option>
-        <option value="acs">Low to High</option>
-        <option value="desc">High to Low</option>
+        <option value="" selected disabled hidden></option>
+        <option value="1">Remove filter</option>  
+        <option value="2">Low to High</option>
+        <option value="3">High to Low</option>
       </select>
-      <input type="submit" value="Sort">
+      <input type="submit" class="btn bg-primary text-white" value="Sort">
     </form>
 
   </div>

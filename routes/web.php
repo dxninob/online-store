@@ -24,7 +24,7 @@ Route::post('/order/add/{id}', 'App\Http\Controllers\OrderController@add')->name
 
 Route::middleware('auth')->group(function () {
     Route::get('/order/purchase', 'App\Http\Controllers\OrderController@purchase')->name("order.purchase");
-    Route::get('/my-account/orders', 'App\Http\Controllers\OrderController@list')->name("order.list");
+    Route::get('/my-orders', 'App\Http\Controllers\OrderController@list')->name("order.list");
 });
 
 Route::middleware('admin')->group(function () {

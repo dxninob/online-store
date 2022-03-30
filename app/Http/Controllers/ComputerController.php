@@ -17,11 +17,15 @@ class ComputerController extends Controller
 
         $sort = $request->get('sort');
 
-        if ($sort != 'desc') {
+        if ($sort == "1") {
+            $viewData["computers"] = Computer::orderBy('id', 'asc')->get();
+        }
+
+        if ($sort == "2") {
             $viewData["computers"] = Computer::orderBy('price', 'asc')->get();
         }
 
-        if ($sort == 'desc') {
+        if ($sort == "3") {
             $viewData["computers"] = Computer::orderBy('price', 'desc')->get();
         }
 
