@@ -64,7 +64,7 @@ class OrderController extends Controller
                 $item->setComputerId($computer->getId());
                 $item->setOrderId($order->getId());
                 $item->save();
-                $total = $total + ($computer->getPrice()*$quantity);
+                $total = $total + ($computer->getPrice() * $quantity);
             }
             $order->setTotal($total);
             $order->save();

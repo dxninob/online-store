@@ -20,15 +20,12 @@ class ComputerController extends Controller
         if ($sort == "1") {
             $viewData["computers"] = Computer::orderBy('id', 'asc')->get();
         }
-
         if ($sort == "2") {
             $viewData["computers"] = Computer::orderBy('price', 'asc')->get();
         }
-
         if ($sort == "3") {
             $viewData["computers"] = Computer::orderBy('price', 'desc')->get();
         }
-
 
         return view('computer.index')->with("viewData", $viewData);
     }

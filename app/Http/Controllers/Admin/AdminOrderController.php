@@ -16,11 +16,9 @@ class AdminOrderController extends Controller
         $viewData["totalSold"] = Order::all()->sum("total");
         $categories = Category::all();
         foreach ($categories as $category) {
-            $viewData["category_".$category] = Category::where('name', $category)->get()->count();
+            $viewData["category_" . $category] = Category::where('name', $category)->get()->count();
         }
         $viewData["categories"] = $categories;
         return view('admin.order.statistics')->with("viewData", $viewData);
     }
 }
-
-    
