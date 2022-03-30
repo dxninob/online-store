@@ -32,6 +32,7 @@ class AdminComputerController extends Controller
         $newComputer->setStorage($request->input('storage'));
         $newComputer->setPrice($request->input('price'));
         $newComputer->setImage("game.png");
+        $newComputer->save();
 
         if ($request->has('image')) {
             $imageName = $newComputer->getId() . "." . $request->file('image')->extension();
@@ -81,6 +82,7 @@ class AdminComputerController extends Controller
         $computer->setGpu($request->input('gpu'));
         $computer->setStorage($request->input('storage'));
         $computer->setPrice($request->input('price'));
+        $computer->save();
 
         if ($request->has('image')) {
             $imageName = $computer->getId() . "." . $request->file('image')->extension();
