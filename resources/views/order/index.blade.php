@@ -4,7 +4,7 @@
 @section('content')
 <div class="card">
   <div class="card-header">
-    Products in Cart
+    Computers in Order
   </div>
   <div class="card-body">
     <table class="table table-bordered table-striped text-center">
@@ -17,12 +17,12 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($viewData["products"] as $product)
+        @foreach ($viewData["computers"] as $computer)
         <tr>
-          <td>{{ $product->getId() }}</td>
-          <td>{{ $product->getName() }}</td>
-          <td>${{ $product->getPrice() }}</td>
-          <td>{{ session('products')[$product->getId()] }}</td>
+          <td>{{ $computer->getId() }}</td>
+          <td>{{ $computer->getName() }}</td>
+          <td>${{ $computer->getPrice() }}</td>
+          <td>{{ session('computers')[$computer->getId()] }}</td>
         </tr>
         @endforeach
       </tbody>
@@ -30,11 +30,11 @@
     <div class="row">
       <div class="text-end">
         <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{ $viewData["total"] }}</a>
-        @if (count($viewData["products"]) > 0)
-        <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-white mb-2">Purchase</a>
-        <a href="{{ route('cart.delete') }}">
+        @if (count($viewData["computers"]) > 0)
+        <a href="{{ route('order.purchase') }}" class="btn bg-primary text-white mb-2">Purchase</a>
+        <a href="{{ route('order.delete') }}">
           <button class="btn btn-danger mb-2">
-            Remove all products from Cart
+            Remove all computers from Order
           </button>
         </a>
         @endif

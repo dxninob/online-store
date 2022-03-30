@@ -4,29 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
-use App\Models\Product;
+use App\Models\Computer;
 
-class Item extends Model
+class OrderComputer extends Model
 {
     /**
-     * ITEM ATTRIBUTES
+     * ORDERCOMPUTER ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['quantity'] - int - contains the item quantity
      * $this->attributes['price'] - int - contains the item price
      * $this->attributes['order_id'] - int - contains the referenced order id
-     * $this->attributes['product_id'] - int - contains the referenced product id
+     * $this->attributes['computer_id'] - int - contains the referenced computer id
      * $this->attributes['created_at'] - timestamp - contains the item creation date
      * $this->attributes['updated_at'] - timestamp - contains the item update date
      * $this->order - Order - contains the associated Order
-     * $this->product - Product - contains the associated Product
+     * $this->computer - Computer - contains the associated Computer
      */
+
+    protected $table = 'order_computer';
 
     public static function validate($request)
     {
         $request->validate([
             "price" => "required|numeric|gt:0",
             "quantity" => "required|numeric|gt:0",
-            "product_id" => "required|exists:products,id",
+            "computer_id" => "required|exists:computers,id",
             "order_id" => "required|exists:orders,id",
         ]);
     }
@@ -71,14 +73,14 @@ class Item extends Model
         $this->attributes['order_id'] = $orderId;
     }
 
-    public function getProductId()
+    public function getComputerId()
     {
-        return $this->attributes['product_id'];
+        return $this->attributes['computer_id'];
     }
 
-    public function setProductId($productId)
+    public function setComputerId($computerId)
     {
-        $this->attributes['product_id'] = $productId;
+        $this->attributes['computer_id'] = $computerId;
     }
 
     public function getCreatedAt()
@@ -116,18 +118,18 @@ class Item extends Model
         $this->order = $order;
     }
 
-    public function product()
+    public function computer()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Computer::class);
     }
     
-    public function getProduct()
+    public function getComputer()
     {
-        return $this->product;
+        return $this->computer;
     }
 
-    public function setProduct($product)
+    public function setComputer($computer)
     {
-        $this->product = $product;
+        $this->computer = $computer;
     }
 }

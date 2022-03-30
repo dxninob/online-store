@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mb-4">
   <div class="card-header">
-    Create Products
+    Create Computers
   </div>
   <div class="card-body">
     @if($errors->any())
@@ -14,7 +14,7 @@
     </ul>
     @endif
 
-    <form method="POST" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.computer.store') }}" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col">
@@ -34,6 +34,45 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="mb-3 row">
+            <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">CPU:</label>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+              <input name="cpu" value="{{ old('cpu') }}" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3 row">
+            <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">RAM:</label>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+              <input name="ram" value="{{ old('ram') }}" type="number" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="mb-3 row">
+            <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">GPU:</label>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+              <input name="gpu" value="{{ old('gpu') }}" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3 row">
+            <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Storage:</label>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+              <input name="storage" value="{{ old('storage') }}" type="number" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col">
           <div class="mb-3 row">
@@ -47,10 +86,6 @@
           &nbsp;
         </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Description</label>
-        <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
-      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
@@ -58,7 +93,7 @@
 
 <div class="card">
   <div class="card-header">
-    Manage Products
+    Manage Computers
   </div>
   <div class="card-body">
     <table class="table table-bordered table-striped">
@@ -71,17 +106,17 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($viewData["products"] as $product)
+        @foreach ($viewData["computers"] as $computer)
         <tr>
-          <td>{{ $product->getId() }}</td>
-          <td>{{ $product->getName() }}</td>
+          <td>{{ $computer->getId() }}</td>
+          <td>{{ $computer->getName() }}</td>
           <td>
-            <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
+            <a class="btn btn-primary" href="{{route('admin.computer.edit', ['id'=> $computer->getId()])}}">
               <i class="bi-pencil"></i>
             </a>
           </td>
           <td>
-            <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST">
+            <form action="{{ route('admin.computer.delete', $computer->getId())}}" method="POST">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger">
