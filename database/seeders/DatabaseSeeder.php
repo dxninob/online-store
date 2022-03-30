@@ -61,6 +61,7 @@ class DatabaseSeeder extends Seeder
                 'ram' => $record['ram'],
                 'gpu' => $record['gpu'],
                 'storage' => $record['storage'],
+                'image' => $record['image'],
                 'price' => $record['price'],
             ]);
         }
