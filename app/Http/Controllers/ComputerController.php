@@ -24,6 +24,7 @@ class ComputerController extends Controller
         $viewData["title"] = $computer->getName()." - Online Store";
         $viewData["subtitle"] =  $computer->getName()." - Computer information";
         $viewData["computer"] = $computer;
+        $viewData["shareText"] = "Te comparto este computador, creo que te podría interesar: ";
         return view('computer.show')->with("viewData", $viewData);
     }
 }

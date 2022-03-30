@@ -23,6 +23,7 @@
         <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">- Admin - Home</a></li>
         <li><a href="{{ route('admin.computer.index') }}" class="nav-link text-white">- Admin - Computers</a></li>
         <li><a href="{{ route('admin.category.index') }}" class="nav-link text-white">- Admin - Categories</a></li>
+        <li><a href="{{ route('admin.order.statistics') }}" class="nav-link text-white">- Admin - Statistics</a></li>
         <li>
           <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">Go back to the home page</a>
         </li>

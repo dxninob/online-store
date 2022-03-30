@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+    Route::get('/admin/statistics', 'App\Http\Controllers\Admin\AdminOrderController@statistics')->name("admin.order.statistics");
     
     Route::get('/admin/computers', 'App\Http\Controllers\Admin\AdminComputerController@index')->name("admin.computer.index");
     Route::post('/admin/computers/store', 'App\Http\Controllers\Admin\AdminComputerController@store')->name("admin.computer.store");

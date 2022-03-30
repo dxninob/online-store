@@ -37,7 +37,8 @@
             </div>
           </div>
         </form>
-        </p>
+        <br><a class="btn bg-primary text-white" href="https://api.whatsapp.com/send?text={{ $viewData['shareText'] }}{{ route('computer.show', ['id'=> $viewData['computer']->getId()]) }}">Compartir en Whatsapp</a>
+      </p>
       </div>
     </div>
   </div>
