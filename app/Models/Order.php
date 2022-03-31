@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Item;
+use App\Models\OrderComputer;
 
 class Order extends Model
 {
@@ -16,8 +16,9 @@ class Order extends Model
      * $this->attributes['created_at'] - timestamp - contains the order creation date
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
-     * $this->items - Item[] - contains the associated items
+     * $this->itemsOrderComputer - OrderComputer[] - contains the associated OrderComputer items
      */
+    protected $table = 'orders';
 
     public static function validate($request)
     {
@@ -92,18 +93,18 @@ class Order extends Model
         $this->user = $user;
     }
 
-    public function items()
+    public function itemsOrderComputer()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(OrderComputer::class);
     }
 
-    public function getItems()
+    public function getItemsOrderComputer()
     {
-        return $this->items;
+        return $this->itemsOrderComputer;
     }
 
-    public function setItems($items)
+    public function setItemsOrderComputer($itemsOrderComputer)
     {
-        $this->items = $items;
+        $this->itemsOrderComputer = $itemsOrderComputer;
     }
 }
