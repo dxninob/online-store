@@ -11,8 +11,8 @@ class ComputerController extends Controller
     public function index(Request $request)
     {
         $viewData = [];
-        $viewData["title"] = "Computers - Online Store";
-        $viewData["subtitle"] =  "List of computers";
+        $viewData["title"] = __('computer.index.title');
+        $viewData["subtitle"] =  __('computer.index.subtitle');
         $viewData["computers"] = Computer::all();
 
         $sort = $request->get('sort');
@@ -34,10 +34,10 @@ class ComputerController extends Controller
     {
         $viewData = [];
         $computer = Computer::findOrFail($id);
-        $viewData["title"] = $computer->getName() . " - Online Store";
-        $viewData["subtitle"] =  $computer->getName() . " - Computer information";
+        $viewData["title"] = $computer->getName() . __('computer.show.title');
+        $viewData["subtitle"] =  $computer->getName() . __('computer.show.subtitle');
         $viewData["computer"] = $computer;
-        $viewData["shareText"] = "Te comparto este computador, creo que te podría interesar: ";
+        $viewData["shareText"] = __('computer.show.shareText');
         return view('computer.show')->with("viewData", $viewData);
     }
 }
