@@ -76,8 +76,8 @@ class OrderController extends Controller
             $request->session()->forget('computers');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
-            $viewData["subtitle"] =  "Purchase Status";
+            $viewData["title"] = __('order.purchase.title');
+            $viewData["subtitle"] =  __('order.purchase.subtitle');
             $viewData["order"] =  $order;
             return view('order.purchase')->with("viewData", $viewData);
         } else {
@@ -88,8 +88,8 @@ class OrderController extends Controller
     public function list()
     {
         $viewData = [];
-        $viewData["title"] = "My Orders - Online Store";
-        $viewData["subtitle"] =  "My Orders";
+        $viewData["title"] = __('order.list.title');
+        $viewData["subtitle"] = __('order.list.subtitle');
         $viewData["orders"] = Order::with(['itemsOrderComputer.computer'])->where('user_id', Auth::user()->getId())->get();
         return view('order.list')->with("viewData", $viewData);
     }
