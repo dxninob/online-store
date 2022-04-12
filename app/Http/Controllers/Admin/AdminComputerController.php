@@ -14,7 +14,7 @@ class AdminComputerController extends Controller
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Computers - Online Store";
+        $viewData["title"] = __('admin.computer.index.title');
         $viewData["computers"] = Computer::all();
         $viewData["categories"] = Category::all();
         return view('admin.computer.index')->with("viewData", $viewData);
@@ -64,7 +64,7 @@ class AdminComputerController extends Controller
     public function edit($id)
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Edit Computer - Online Store";
+        $viewData["title"] = __('admin.computer.edit.title');
         $viewData["computer"] = Computer::findOrFail($id);
         $viewData["categories"] = Category::all();
 

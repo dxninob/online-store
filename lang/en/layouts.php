@@ -13,7 +13,6 @@ return [
     |
     */
 
-    'admin.title' => 'Admin - Online Store',
     'admin.user' => 'Administrador',
     'admin.panel' => 'Panel de administrador',
     'admin.home' => '- Admin - Inicio',

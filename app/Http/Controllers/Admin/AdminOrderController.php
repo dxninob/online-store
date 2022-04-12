@@ -12,7 +12,7 @@ class AdminOrderController extends Controller
     public function statistics()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Statistics - Online Store";
+        $viewData["title"] = __('admin.order.statistics.title');
         $viewData["totalOfOrders"] = Order::all()->count();
         $viewData["totalSold"] = Order::all()->sum("total");
         $viewData["averagePrice"] = Computer::all()->avg("price");
