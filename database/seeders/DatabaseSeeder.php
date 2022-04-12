@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\ComputerCategory;
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -22,16 +21,18 @@ class DatabaseSeeder extends Seeder
     {
         function import_CSV($filename, $delimiter = ',')
         {
-            if (!file_exists($filename) || !is_readable($filename))
+            if (!file_exists($filename) || !is_readable($filename)) {
                 return false;
+            }
             $header = null;
             $data = array();
             if (($handle = fopen($filename, 'r')) !== false) {
                 while (($row = fgetcsv($handle, 1000, $delimiter)) !== false) {
-                    if (!$header)
+                    if (!$header) {
                         $header = $row;
-                    else
+                    } else {
                         $data[] = array_combine($header, $row);
+                    }
                 }
                 fclose($handle);
             }
@@ -53,7 +54,7 @@ class DatabaseSeeder extends Seeder
         $categoryRecords = import_CSV($categoryFile);
         $computerCategoryRecords = import_CSV($computerCategoryFile);
 
-        // add each record to the posts table in DB       
+        // add each record to the posts table in DB
         foreach ($computerRecords as $key => $record) {
             Computer::create([
                 'name' => $record['name'],
