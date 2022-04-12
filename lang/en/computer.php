@@ -16,20 +16,20 @@ return [
     'cpu' => 'CPU',
     'ram' => 'RAM',
     'gpu' => 'GPU',
-    'storage' => 'Almacenamiento',
-    'categories' => 'Categorias',
+    'storage' => 'Storage',
+    'categories' => 'Categories',
 
     'index.title' => 'Computers - Online Store',
     'index.subtitle' => 'List of computers',
-    'index.sortPrice' => 'Filtrar por precio',
-    'index.sortPrice.removeFilter' => 'Quitar filtro',
-    'index.sortPrice.lowToHigh' => 'Menor a mayor',
-    'index.sortPrice.highToLow' => 'Mayor a menor',
+    'index.sortPrice' => 'Sort by price',
+    'index.sortPrice.removeFilter' => 'Remove filter',
+    'index.sortPrice.lowToHigh' => 'Low to high',
+    'index.sortPrice.highToLow' => 'High to low',
 
     'show.title' => ' - Online Store',
     'show.subtitle' => ' - Computer information',
-    'show.quantity' => 'Cantidad',
-    'show.shareText' => 'Te comparto este computador, creo que te podría interesar: ',
-    'show.share' => 'Compartir en Whatsapp',
-    'show.addToOrder' => 'Añadir a la orden'
+    'show.quantity' => 'Quantity',
+    'show.shareText' => 'I think you might like this computer: ',
+    'show.share' => 'Share with Whatsapp',
+    'show.addToOrder' => 'Add to order'
 ];

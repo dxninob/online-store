@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'index.title' => 'Home Page - Online Store',
+    'index.title' => 'Inicio - Tienda Online',
 
-    'about.title' => 'About us - Online Store',
-    'about.subtitle' => 'About us',
-    'about.description' => 'This is the about us page...',
-    'about.author' => 'Developed by: Samuel Ceballos, Juan Pablo Madrid y Daniela Niño',
+    'about.title' => 'Sobre nosotros - Tienda Online',
+    'about.subtitle' => 'Sobre nosotros',
+    'about.description' => 'Esta es una página sobre nosotros...',
+    'about.author' => 'Desarrollado por: Samuel Ceballos, Juan Pablo Madrid y Daniela Niño',
 ];

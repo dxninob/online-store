@@ -13,41 +13,41 @@ return [
     |
     */
 
-    'name' => 'Nombre',
+    'name' => 'Name',
     'id' => 'ID',
-    'price' => 'Precio',
+    'price' => 'Price',
     'cpu' => 'CPU',
     'ram' => 'RAM',
     'gpu' => 'GPU',
-    'storage' => 'Almacenamiento',
-    'image' => 'Imagen',
-    'categories' => 'Categorías',
-    'description' => 'Descripción',
-    'edit' => 'Editar',
-    'delete' => 'Eliminar',
-    'submit' => 'Guardar',
+    'storage' => 'Storage',
+    'image' => 'Image',
+    'categories' => 'Categories',
+    'description' => 'Description',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'submit' => 'Submit',
 
     'category.edit.title' => 'Admin Page - Edit Category',
-    'category.edit.editCategory' => 'Editar categoria',
+    'category.edit.editCategory' => 'Edit category',
 
     'category.index.title' => 'Admin Page - Categories',
-    'category.index.createCategory' => 'Crear categoría',
-    'category.index.manageCategories' => 'Administar categorías',
+    'category.index.createCategory' => 'Create category',
+    'category.index.manageCategories' => 'Manage categories',
 
     'computer.edit.title' => 'Admin Page - Edit Computer',
-    'computer.edit.editComputer' => 'Editar computador',
+    'computer.edit.editComputer' => 'Edit computer',
 
     'computer.index.title' => 'Admin Page - Computers',
-    'computer.index.createComputer' => 'Crear computador',
-    'computer.index.manageComputers' => 'Administar computadores',
+    'computer.index.createComputer' => 'Create computer',
+    'computer.index.manageComputers' => 'Manage computers',
 
     'home.index.title' => 'Admin - Online Store',
-    'home.index.panel' => 'Panel de Administración',
-    'home.index.description' => 'Bienvenido al panel de administrador, use la barra lateral para navegar entre las diferentes opciones.',
+    'home.index.panel' => 'Admin Panel',
+    'home.index.description' => 'Welcome to the admin panel, use the sidebar to navigate between the different options.',
 
     'order.statistics.title' => 'Admin Page - Statistics',
-    'order.statistics.totalOrders' => 'Total de ordenes',
-    'order.statistics.totalSold' => 'Total vendido',
-    'order.statistics.avgPrice' => 'Precio promedio',
-    'order.statistics.numCategories' => 'Número de categorias'
+    'order.statistics.totalOrders' => 'Total of orders',
+    'order.statistics.totalSold' => 'Total sold',
+    'order.statistics.avgPrice' => 'Average price',
+    'order.statistics.numCategories' => 'Number of categories'
 ];

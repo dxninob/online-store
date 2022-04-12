@@ -14,26 +14,26 @@ return [
     */
 
     'id' => 'ID',
-    'name' => 'Nombre',
-    'price' => 'Precio',
-    'quantity' => 'Cantidad',
-    'order' => 'Orden',
-    'date' => 'Fecha',
+    'name' => 'Name',
+    'price' => 'Price',
+    'quantity' => 'Quantity',
+    'order' => 'Order',
+    'date' => 'Date',
     'total' => 'Total',
 
     'index.title' => 'Order - Online Store',
     'index.subtitle' => 'Shopping Order',
-    'index.inOrder' => 'Computadores en la Orden',
-    'index.totalPay' => 'Total a pagar',
-    'index.removeAll' => 'Eliminar todos',
-    'index.purchase' => 'Pagar',
+    'index.inOrder' => 'Computers in Order',
+    'index.totalPay' => 'Total to pay',
+    'index.removeAll' => 'Remove all',
+    'index.purchase' => 'Purchase',
 
     'list.title' => 'My Orders - Online Store',
     'list.subtitle' => 'My Orders',
-    'list.message' => 'Parece que no has comprado nada en nuestra tienda',
+    'list.message' => 'It seems that you have not purchased anything in our store',
 
     'purchase.title' => 'Purchase - Online Store',
     'purchase.subtitle' => 'Purchase Status',
-    'purchase.completed' => 'Compra realizada',
-    'purchase.message' => 'Felicitaciones, compra realizada. El número de la orden es el',
+    'purchase.completed' => 'Purchase completed',
+    'purchase.message' => 'Congratulations, purchase completed. The order number is ',
 ];
