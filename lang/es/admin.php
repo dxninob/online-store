@@ -46,6 +46,7 @@ return [
     'home.index.description' => 'Bienvenido al panel de administrador, use la barra lateral para navegar entre las diferentes opciones.',
 
     'order.statistics.title' => 'Pagina de Admin - Estadisticas',
+    'order.statistics.view' => 'Ver estadisticas',
     'order.statistics.totalOrders' => 'Total de ordenes',
     'order.statistics.totalSold' => 'Total vendido',
     'order.statistics.avgPrice' => 'Precio promedio',

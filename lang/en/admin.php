@@ -46,6 +46,7 @@ return [
     'home.index.description' => 'Welcome to the admin panel, use the sidebar to navigate between the different options.',
 
     'order.statistics.title' => 'Admin Page - Statistics',
+    'order.statistics.view' => 'View statistics',
     'order.statistics.totalOrders' => 'Total of orders',
     'order.statistics.totalSold' => 'Total sold',
     'order.statistics.avgPrice' => 'Average price',
