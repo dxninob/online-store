@@ -42,9 +42,8 @@ class AdminComputerController extends Controller
 
         $categories = $request->input('categories');
         foreach ($categories as $category) {
-            $categoryObj = Category::where('name', $category);
-            $newComputer->categories()->attach($categoryObj->get('id'));
-            // $categoryObj->computers()->attach($computer->get('id'));
+            $categoryId = Category::where('name', $category)->get('id');
+            $newComputer->categories()->attach($categoryId);
         }
         $newComputer->save();
 
@@ -87,11 +86,16 @@ class AdminComputerController extends Controller
         }
         $computer->save();
 
+        $allCategories = Category::all();
+        foreach ($allCategories as $category) {
+            $categoryId = $category->getId();
+            $computer->categories()->detach($categoryId);
+        }
+
         $categories = $request->input('categories');
         foreach ($categories as $category) {
-            $categoryObj = Category::where('name', $category);
-            $computer->categories()->attach($categoryObj->get('id'));
-            // $categoryObj->computers()->attach($computer->get('id'));
+            $categoryId = Category::where('name', $category)->get('id');
+            $computer->categories()->attach($categoryId);
         }
         $computer->save();
 
