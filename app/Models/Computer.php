@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\OrderComputer;
+use App\Models\Item;
 
 class Computer extends Model
 {
@@ -19,7 +19,7 @@ class Computer extends Model
      * $this->attributes['price'] - int - contains the computer price
      * $this->attributes['created_at'] - timestamp - contains the computer creation date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
-     * $this->itemsOrderComputer - OrderComputer[] - contains the associated OrderComputer items
+     * $this->items - Item[] - contains the associated items
      * $this->attributes['categories'] - Category[] - contains the associated categories
      */
 
@@ -148,19 +148,19 @@ class Computer extends Model
         $this->attributes['updated_at'] = $updatedAt;
     }
 
-    public function itemsOrderComputer()
+    public function items()
     {
-        return $this->hasMany(OrderComputer::class);
+        return $this->hasMany(Item::class);
     }
 
-    public function getItemsOrderComputer()
+    public function getItems()
     {
-        return $this->itemsOrderComputer;
+        return $this->items;
     }
 
-    public function setItemsOrderComputer($itemsOrderComputer)
+    public function setItems($items)
     {
-        $this->itemsOrderComputer = $itemsOrderComputer;
+        $this->items = $items;
     }
 
     public function categories()

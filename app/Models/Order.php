@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\OrderComputer;
+use App\Models\Items;
 
 class Order extends Model
 {
@@ -16,7 +16,7 @@ class Order extends Model
      * $this->attributes['created_at'] - timestamp - contains the order creation date
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
-     * $this->itemsOrderComputer - OrderComputer[] - contains the associated OrderComputer items
+     * $this->items - Item[] - contains the associated items items
      */
     protected $table = 'orders';
 
@@ -93,18 +93,18 @@ class Order extends Model
         $this->user = $user;
     }
 
-    public function itemsOrderComputer()
+    public function items()
     {
-        return $this->hasMany(OrderComputer::class);
+        return $this->hasMany(Item::class);
     }
 
-    public function getItemsOrderComputer()
+    public function getItems()
     {
-        return $this->itemsOrderComputer;
+        return $this->items;
     }
 
-    public function setItemsOrderComputer($itemsOrderComputer)
+    public function setItems($items)
     {
-        $this->itemsOrderComputer = $itemsOrderComputer;
+        $this->items = $items;
     }
 }

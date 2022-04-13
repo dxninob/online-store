@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($order->getItemsOrderComputer() as $item)
+        @foreach ($order->getItems() as $item)
         <tr>
           <td>{{ $item->getId() }}</td>
           <td>
