@@ -20,6 +20,7 @@ class Computer extends Model
      * $this->attributes['created_at'] - timestamp - contains the computer creation date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      * $this->itemsOrderComputer - OrderComputer[] - contains the associated OrderComputer items
+     * $this->attributes['categories'] - Category[] - contains the associated categories
      */
 
     protected $table = 'computers';
@@ -162,18 +163,18 @@ class Computer extends Model
         $this->itemsOrderComputer = $itemsOrderComputer;
     }
 
-    public function itemsComputerCategory()
+    public function categories()
     {
         return $this->belongsToMany(Category::class, 'computer_category');
     }
 
-    public function getItemsComputerCategory()
+    public function getCategories()
     {
-        return $this->itemsComputerCategory;
+        return $this->categories;
     }
 
-    public function setItemsComputerCategory($itemsComputerCategory)
+    public function setCategories($categories)
     {
-        $this->itemsComputerCategory = $itemsComputerCategory;
+        $this->categories = $categories;
     }
 }

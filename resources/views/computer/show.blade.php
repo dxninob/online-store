@@ -18,7 +18,7 @@
         <p class="card-text">{{ __('computer.storage') }}: {{ $viewData["computer"]->getStorage() }} GB</p>
 
         <p>{{ __('computer.categories') }}:</p>
-        @foreach($viewData["computer"]->getItemsComputerCategory() as $category)
+        @foreach($viewData["computer"]->getCategories() as $category)
         <p>- {{ $category->getName() }}</p>
         @endforeach
 

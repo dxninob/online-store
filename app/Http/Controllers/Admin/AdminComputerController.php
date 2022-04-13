@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Computer;
 use App\Models\Category;
-use App\Models\ComputerCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,18 +38,15 @@ class AdminComputerController extends Controller
             $newComputer->setImage($imageName);
             $request->image->move(public_path('images'), $imageName);
         }
-
         $newComputer->save();
 
         $categories = $request->input('categories');
-        $newComputerId = $newComputer->getId();
         foreach ($categories as $category) {
-            $item = new ComputerCategory();
-            $categoryIds = Category::where('name', $category)->get('id');
-            $item->setCategoryId($categoryIds[0]->id);
-            $item->setComputerId($newComputerId);
-            $item->save();
+            $categoryObj = Category::where('name', $category);
+            $newComputer->categories()->attach($categoryObj->get('id'));
+            // $categoryObj->computers()->attach($computer->get('id'));
         }
+        $newComputer->save();
 
         return back();
     }
@@ -89,18 +85,16 @@ class AdminComputerController extends Controller
             $computer->setImage($imageName);
             $request->image->move(public_path('images'), $imageName);
         }
-
         $computer->save();
 
         $categories = $request->input('categories');
-        $newComputerId = $computer->getId();
         foreach ($categories as $category) {
-            $item = new ComputerCategory();
-            $categoryIds = Category::where('name', $category)->get('id');
-            $item->setCategoryId($categoryIds[0]->id);
-            $item->setComputerId($newComputerId);
-            $item->save();
+            $categoryObj = Category::where('name', $category);
+            $computer->categories()->attach($categoryObj->get('id'));
+            // $categoryObj->computers()->attach($computer->get('id'));
         }
+        $computer->save();
+
         return redirect()->route('admin.computer.index');
     }
 }
