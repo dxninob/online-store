@@ -44,13 +44,32 @@
 
   <!-- footer -->
   <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>
-        Copyright<a>
-        </a> - <b>Daniela</b>
-        </a> - <b>Samuel</b>
-        </a> - <b>Juan Pablo</b>
-      </small>
+    <div class="row">
+      <div class="col">
+      </div>
+
+      <div class="col">
+        <small>
+          Copyright<a>
+          </a> - <b>Daniela</b>
+          </a> - <b>Samuel</b>
+          </a> - <b>Juan Pablo</b>
+        </small>
+      </div>
+
+      <div class="col">
+        <small>
+          @if (config('locale.status') && count(config('locale.languages')) > 1)
+            @foreach (array_keys(config('locale.languages')) as $lang)
+              @if ($lang != App::getLocale())
+                <a href="{{ route('lang.swap', $lang) }}">
+                  {{ $lang }}
+                </a>
+              @endif
+            @endforeach
+          @endif
+        </small>
+      </div>
     </div>
   </div>
   <!-- footer -->
