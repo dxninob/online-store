@@ -1,9 +1,42 @@
-Para correr el proyecto primero se debe clonar el repositorio
+# Installation
 
-Despues se debe correr "composer install" de tal forma que se tengan todas las dependencias.
+Clone the repository:
+```
+git clone https://github.com/dxninob/onlineStore.git
+```
 
-Lugo se debe crear una base de datos MySQL llamada onlinestore. 
+Go inside project folder:
+```
+cd onlineStore
+```
 
-Luego se corre el comando "php artisan migrate:fresh --seed", para crear y llenar las tablas de la base de datos con valores predeterminados.
+Rename the .env.example file to .env and write the database name, username and password.
+```
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
 
-Finalmente se debe correr el comando "php artisan serve" para acceder a la pagina. 
+Run the following commands:
+```
+composer install
+```
+```
+php artisan key:generate
+```
+
+Run the following command if you don't want to include any test data in the web page:
+```
+php artisan migrate:fresh
+```
+
+Or run the following command if you want to include test data in the web page:
+```
+php artisan migrate:fresh --seed
+```
+
+# Contributors
+
+- Daniela Niño - dxninob
+- Samuel Ceballos - sceballosp
+- Juan Pablo Madrid - jpmadridf
