@@ -50,5 +50,6 @@ return [
     'order.statistics.totalOrders' => 'Total of orders',
     'order.statistics.totalSold' => 'Total sold',
     'order.statistics.avgPrice' => 'Average price',
-    'order.statistics.numCategories' => 'Number of categories'
+    'order.statistics.numCategories' => 'Number of categories',
+    'order.statistics.computersCategory' => 'Quantity of computers per category',
 ];

@@ -19,13 +19,17 @@
         <div class="mb-3 row">
           <p class="lead"><b>{{ __('admin.order.statistics.totalOrders') }}:</b> {{ $viewData["totalOfOrders"] }}</p>
           <p class="lead"><b>{{ __('admin.order.statistics.totalSold') }}:</b> ${{ $viewData["totalSold"] }}</p>
+          <p class="lead"><b>{{ __('admin.order.statistics.avgPrice') }}:</b> ${{ $viewData["averagePrice"] }}</p>
+          <p class="lead"><b>{{ __('admin.order.statistics.numCategories') }}:</b> {{ $viewData["totalCategories"] }}</p>
         </div>
       </div>
       <div class="col">
         <div class="mb-3 row">
-          <p class="lead"><b>{{ __('admin.order.statistics.avgPrice') }}:</b> ${{ $viewData["averagePrice"] }}</p>
-          <p class="lead"><b>{{ __('admin.order.statistics.numCategories') }}:</b> ${{ $viewData["totalCategories"] }}</p>
-        </div>
+          <p class="lead"><b>{{ __('admin.order.statistics.computersCategory') }}:</b></p>
+          @foreach ($viewData['categories'] as $category)
+            <p class="lead">{{ $category->getName() }}: {{ $viewData["computers" . $category->getName()] }}</p>
+          @endforeach
+          </div>
       </div>
     </div>
   </div>
