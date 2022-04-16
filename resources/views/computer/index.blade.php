@@ -12,7 +12,17 @@
         <option value="2">{{ __('computer.index.sortPrice.lowToHigh') }}</option>
         <option value="3">{{ __('computer.index.sortPrice.highToLow') }}</option>
       </select>
-      <input type="submit" class="btn bg-primary text-white" value="Sort">
+
+      <label for="cars">{{ __('computer.index.sortCategory') }}</label>
+      <select name="category" id="category">
+        <option value="" selected disabled hidden></option>
+        <option value="remove">{{ __('computer.index.sortPrice.removeFilter') }}</option>
+        @foreach ($viewData['categories'] as $category)
+            <option value='{{ $category->getName() }}'>{{ $category->getName() }}</option>
+        @endforeach
+      </select>
+
+      <input type="submit" class="btn bg-primary text-white" value="{{ __('computer.index.filter') }}">
     </form>
 
   </div>

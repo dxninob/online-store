@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
@@ -14,6 +15,7 @@ class ComputerController extends Controller
         $viewData["title"] = __('computer.index.title');
         $viewData["subtitle"] =  __('computer.index.subtitle');
         $viewData["computers"] = Computer::all();
+        $viewData["categories"] = Category::all();
 
         $sort = $request->get('sort');
 

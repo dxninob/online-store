@@ -25,6 +25,8 @@ return [
     'index.sortPrice.removeFilter' => 'Remove filter',
     'index.sortPrice.lowToHigh' => 'Low to high',
     'index.sortPrice.highToLow' => 'High to low',
+    'index.sortCategory' => 'Sort by category',
+    'index.filter' => 'Filter',
 
     'show.title' => ' - Online Store',
     'show.subtitle' => ' - Computer information',

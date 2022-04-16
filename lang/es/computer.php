@@ -25,6 +25,8 @@ return [
     'index.sortPrice.removeFilter' => 'Quitar filtro',
     'index.sortPrice.lowToHigh' => 'Menor a mayor',
     'index.sortPrice.highToLow' => 'Mayor a menor',
+    'index.sortCategory' => 'Filtrar por categoria',
+    'index.filter' => 'Filtrar',
 
     'show.title' => ' - Tienda Online',
     'show.subtitle' => ' - Information del Computador',
