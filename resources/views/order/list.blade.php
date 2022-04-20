@@ -10,6 +10,7 @@
   <div class="card-body">
     <b>{{ __('order.date') }}:</b> {{ $order->getCreatedAt() }}<br />
     <b>{{ __('order.total') }}:</b> ${{ $order->getTotal() }}<br />
+  
     <table class="table table-bordered table-striped text-center mt-3">
       <thead>
         <tr>
@@ -34,6 +35,12 @@
         @endforeach
       </tbody>
     </table>
+
+    <form action="{{ route('pdf.download', ['id'=>  $order->getId()]) }}" method="POST">
+      @csrf
+      <button type="submit" class="btn bg-primary text-white">Download</button>
+    </form>
+
   </div>
 </div>
 @empty

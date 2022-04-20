@@ -24,6 +24,8 @@ Route::post('/order/add/{id}', 'App\Http\Controllers\OrderController@add')->name
 
 Route::get('lang/{lang}', 'App\Http\Controllers\LanguageController@swap')->name('lang.swap');
 
+Route::post('/pdf/download/{id}', 'App\Http\Controllers\PDFController@download')->name("pdf.download");
+
 Route::middleware('auth')->group(function () {
     Route::get('/order/purchase', 'App\Http\Controllers\OrderController@purchase')->name("order.purchase");
     Route::get('/my-orders', 'App\Http\Controllers\OrderController@list')->name("order.list");
