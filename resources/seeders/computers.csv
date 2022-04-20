@@ -1,0 +1,11 @@
+id,name,cpu,ram,gpu,storage,image,price
+1,Lenovo,AMD Ryzen 5 2500U,8,Nvidia GTX 1660 ,1000,1.jpg,500
+2,HP,Intel Core i5-10210U,16,AMD Radeon ,1000,2.jpg,1000
+3,Dell,Intel Core i7-8565U,16,Nvidia RTX 2070 ,500,3.jpg,700
+4,Apple,Intel Core i7-8565U,16,AMD Radeon ,240,4.jpg,600
+5,Acer,AMD Ryzen 5,8,Nvidia GTX 1660 ,500,5.jpg,1000
+6,Asus,AMD Ryzen 3,8,Intel graphics HD,240,6.jpg,400
+7,Microsoft,Intel Core i5-6600K,8,Intel graphics HD,120,7.jpg,700
+8,Razer,Intel Core i7-8565U,32,Nvidia RTX 2070 ,2000,8.jpg,1500
+9,MSI,AMD Ryzen 5,16,AMD Radeon ,1000,9.jpg,800
+10,Legion,Intel Core i7-6700HQ,16,Nvidia RTX 3060,1000,10.jpg,500

@@ -44,10 +44,10 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class]);
         $this->call([ComputerCategorySeeder::class]);
 
-        $computerFile = public_path("/seeders/computers" . ".csv");
-        $userFile = public_path("/seeders/users" . ".csv");
-        $categoryFile = public_path("/seeders/categories" . ".csv");
-        $computerCategoryFile = public_path("/seeders/computer_category" . ".csv");
+        $computerFile = resource_path("/seeders/computers" . ".csv");
+        $userFile = resource_path("/seeders/users" . ".csv");
+        $categoryFile = resource_path("/seeders/categories" . ".csv");
+        $computerCategoryFile = resource_path("/seeders/computer_category" . ".csv");
 
         $computerRecords = import_CSV($computerFile);
         $userRecords = import_CSV($userFile);
