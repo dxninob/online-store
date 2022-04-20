@@ -92,7 +92,11 @@
         <div class="mb-3">
           <label for="categories">{{ __('admin.categories') }}:</label><br>
           @foreach($viewData["categories"] as $category)
-          <input type="checkbox" name="categories[]" value="{{ $category->getName() }}"> {{ $category->getName() }}<br />
+            @if(in_array($category->getName(), $viewData['categoryNames']))
+              <input type="checkbox" checked name="categories[]" value="{{ $category->getName() }}"> {{ $category->getName() }}<br/>
+            @else
+              <input type="checkbox" name="categories[]" value="{{ $category->getName() }}"> {{ $category->getName() }}<br/>
+            @endif
           @endforeach
         </div>
       </fieldset>
