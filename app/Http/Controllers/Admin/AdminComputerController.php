@@ -66,12 +66,7 @@ class AdminComputerController extends Controller
         $viewData["title"] = __('admin.computer.edit.title');
         $viewData["computer"] = Computer::findOrFail($id);
         $viewData["categories"] = Category::all();
-        $datos = $viewData["computer"]->getCategories()->toArray();
-
-        $viewData["categoryNames"] = [];  
-        foreach ($datos as $dato) {
-            array_push($viewData["categoryNames"], $dato["name"]);
-        }
+        $viewData["categoryNames"] = $viewData["computer"]->getCategories()->pluck('name')->toArray();
 
         return view('admin.computer.edit')->with("viewData", $viewData);
     }
