@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/computers', 'App\Http\Controllers\Api\ComputerApi@index')->name("api.computer.index");
+Route::get('/computers/paginate', 'App\Http\Controllers\Api\ComputerApi@paginate')->name("api.computer.paginate");
