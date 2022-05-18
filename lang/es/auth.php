@@ -17,4 +17,14 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'login' => 'Iniciar Sesión',
+    'email' => 'Correo',
+    'password' => 'Contraseña',
+    'remember.me' => 'Recordarme',
+    'forgot.pass' => '¿Olvidaste tu contraseña?',
+
+    'register' => 'Registrarse',
+    'name' => 'Nombre',
+    'confirm.pass' =>'Confirmar Contraseña'
+
 ];
