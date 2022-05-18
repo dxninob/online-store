@@ -18,7 +18,7 @@
         <option value="" selected disabled hidden></option>
         <option value="remove">{{ __('computer.index.sortPrice.removeFilter') }}</option>
         @foreach ($viewData['categories'] as $category)
-            <option value='{{ $category->getName() }}'>{{ $category->getName() }}</option>
+            <option value='{{ $category->getId() }}'>{{ $category->getName() }}</option>
         @endforeach
       </select>
 
@@ -27,6 +27,12 @@
 
   </div>
 
+  <div>
+    @if ($viewData["categoryExists"] == 1)
+      <p>{{ $viewData['category']->getName() }}: {{ $viewData['description'] }}</p>
+    @endif
+  </div>
+  
   @foreach ($viewData["computers"] as $computer)
   <div class="col-md-4 col-lg-3 mb-2">
     <div class="card">
