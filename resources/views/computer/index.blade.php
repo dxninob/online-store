@@ -8,15 +8,13 @@
       <label for="cars">{{ __('computer.index.sortPrice') }}</label>
       <select name="sort" id="sort">
         <option value="" selected disabled hidden></option>
-        <option value="1">{{ __('computer.index.sortPrice.removeFilter') }}</option>
-        <option value="2">{{ __('computer.index.sortPrice.lowToHigh') }}</option>
-        <option value="3">{{ __('computer.index.sortPrice.highToLow') }}</option>
+        <option value="1">{{ __('computer.index.sortPrice.lowToHigh') }}</option>
+        <option value="2">{{ __('computer.index.sortPrice.highToLow') }}</option>
       </select>
 
       <label for="cars">{{ __('computer.index.sortCategory') }}</label>
       <select name="category" id="category">
         <option value="" selected disabled hidden></option>
-        <option value="remove">{{ __('computer.index.sortPrice.removeFilter') }}</option>
         @foreach ($viewData['categories'] as $category)
             <option value='{{ $category->getId() }}'>{{ $category->getName() }}</option>
         @endforeach

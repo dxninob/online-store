@@ -23,18 +23,18 @@ class ComputerController extends Controller
 
         $orderItem = "";
         $order = "";
-        if ($sort == "1" || $sort == "") {
+        if ($sort == "") {
             $orderItem = "id";
             $order = "asc";
-        } else if ($sort == "2") {
+        } else if ($sort == "1") {
             $orderItem = "price";
             $order = "asc";
-        } else if ($sort == "3") {
+        } else if ($sort == "2") {
             $orderItem = "price";
             $order = "desc";
         }
 
-        if ($category == "remove" || $category == "") {
+        if ($category == "") {
             $viewData["computers"] = Computer::orderBy($orderItem, $order)->get();
         } else {
             $viewData["categoryExists"] = 1;
