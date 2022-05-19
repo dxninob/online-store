@@ -26,6 +26,7 @@ return [
     'app.store' => 'Computer Store',
     'app.home' => 'Home',
     'app.computers' => 'Computers',
+    'app.phones' => 'Phones',
     'app.order' => 'Order',
     'app.about' => 'About us',
     'app.login' => 'Log In',

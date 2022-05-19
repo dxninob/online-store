@@ -26,6 +26,7 @@ return [
     'app.store' => 'Tienda de Computadores',
     'app.home' => 'Inicio',
     'app.computers' => 'Computadores',
+    'app.phones' => 'Celulares',
     'app.order' => 'Orden',
     'app.about' => 'Sobre nosotros',
     'app.myOrder' => 'Mis ordenes',
