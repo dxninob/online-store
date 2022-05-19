@@ -20,6 +20,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/computers', 'App\Http\Controllers\Api\ComputerApi@index')->name("api.computer.index");
 Route::get('/computers/paginate', 'App\Http\Controllers\Api\ComputerApi@paginate')->name("api.computer.paginate");
-
-Route::get('/phones', 'App\Http\Controllers\Api\PhoneController@index')->name("api.phone.index");
-Route::get('/phones/{id}', 'App\Http\Controllers\Api\PhoneController@show')->name("api.phone.show");

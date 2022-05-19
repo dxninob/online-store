@@ -12,8 +12,8 @@
         <h5 class="card-title">
           {{ $phone['data']['name'] }} (${{ $phone['data']['price'] }})
         </h5>
-        <p class="card-text">{{ __('api.phone.brand') }}: {{ $phone['data']['brand'] }}</p>
-        <p class="card-text">{{ __('api.phone.model') }}: {{ $phone['data']['model'] }}</p>
+        <p class="card-text">{{ __('phone.brand') }}: {{ $phone['data']['brand'] }}</p>
+        <p class="card-text">{{ __('phone.model') }}: {{ $phone['data']['model'] }}</p>
       </div>
     </div>
   </div>

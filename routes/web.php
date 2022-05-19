@@ -26,6 +26,9 @@ Route::get('lang/{lang}', 'App\Http\Controllers\LanguageController@swap')->name(
 
 Route::post('/pdf/download/{id}', 'App\Http\Controllers\PDFController@download')->name("pdf.download");
 
+Route::get('/phones', 'App\Http\Controllers\PhoneController@index')->name("phone.index");
+Route::get('/phones/{id}', 'App\Http\Controllers\PhoneController@show')->name("phone.show");
+
 Route::middleware('auth')->group(function () {
     Route::get('/order/purchase', 'App\Http\Controllers\OrderController@purchase')->name("order.purchase");
     Route::get('/my-orders', 'App\Http\Controllers\OrderController@list')->name("order.list");
