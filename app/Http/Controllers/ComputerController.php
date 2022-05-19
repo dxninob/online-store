@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
@@ -11,22 +12,40 @@ class ComputerController extends Controller
     public function index(Request $request)
     {
         $viewData = [];
-        $viewData["title"] = "Computers - Online Store";
-        $viewData["subtitle"] =  "List of computers";
-        $viewData["computers"] = Computer::all();
+        $viewData["title"] = __('computer.index.title');
+        $viewData["subtitle"] =  __('computer.index.subtitle');
+        $viewData["categories"] = Category::all();
 
         $sort = $request->get('sort');
+        $category = $request->get('category');
+        $viewData["computers"] = [];
+        $viewData["categoryExists"] = 0;
 
-        if ($sort == "1") {
-            $viewData["computers"] = Computer::orderBy('id', 'asc')->get();
-        }
-        if ($sort == "2") {
-            $viewData["computers"] = Computer::orderBy('price', 'asc')->get();
-        }
-        if ($sort == "3") {
-            $viewData["computers"] = Computer::orderBy('price', 'desc')->get();
+        $orderItem = "";
+        $order = "";
+        if ($sort == "") {
+            $orderItem = "id";
+            $order = "asc";
+        } else if ($sort == "1") {
+            $orderItem = "price";
+            $order = "asc";
+        } else if ($sort == "2") {
+            $orderItem = "price";
+            $order = "desc";
         }
 
+        if ($category == "") {
+            $viewData["computers"] = Computer::orderBy($orderItem, $order)->get();
+        } else {
+            $viewData["categoryExists"] = 1;
+            $viewData["category"] = Category::findOrFail($category);
+            $viewData["description"] = $viewData["category"]->getDescription();
+            
+            $viewData["computers"] = Computer::whereHas('categories', function($q) use($category){
+                $q->where('category_id', $category);
+            })->orderBy($orderItem, $order)->get();
+        }
+        
         return view('computer.index')->with("viewData", $viewData);
     }
 
@@ -34,10 +53,10 @@ class ComputerController extends Controller
     {
         $viewData = [];
         $computer = Computer::findOrFail($id);
-        $viewData["title"] = $computer->getName() . " - Online Store";
-        $viewData["subtitle"] =  $computer->getName() . " - Computer information";
+        $viewData["title"] = $computer->getName() . __('computer.show.title');
+        $viewData["subtitle"] =  $computer->getName() . __('computer.show.subtitle');
         $viewData["computer"] = $computer;
-        $viewData["shareText"] = "Te comparto este computador, creo que te podría interesar: ";
+        $viewData["shareText"] = __('computer.show.shareText');
         return view('computer.show')->with("viewData", $viewData);
     }
 }

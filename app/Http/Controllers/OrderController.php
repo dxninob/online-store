@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Computer;
 use App\Models\Order;
-use App\Models\OrderComputer;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,7 +58,7 @@ class OrderController extends Controller
             $computersInOrder = Computer::findMany(array_keys($computersInSession));
             foreach ($computersInOrder as $computer) {
                 $quantity = $computersInSession[$computer->getId()];
-                $item = new OrderComputer();
+                $item = new Item();
                 $item->setQuantity($quantity);
                 $item->setPrice($computer->getPrice());
                 $item->setComputerId($computer->getId());
@@ -76,8 +76,8 @@ class OrderController extends Controller
             $request->session()->forget('computers');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
-            $viewData["subtitle"] =  "Purchase Status";
+            $viewData["title"] = __('order.purchase.title');
+            $viewData["subtitle"] =  __('order.purchase.subtitle');
             $viewData["order"] =  $order;
             return view('order.purchase')->with("viewData", $viewData);
         } else {
@@ -88,9 +88,9 @@ class OrderController extends Controller
     public function list()
     {
         $viewData = [];
-        $viewData["title"] = "My Orders - Online Store";
-        $viewData["subtitle"] =  "My Orders";
-        $viewData["orders"] = Order::with(['itemsOrderComputer.computer'])->where('user_id', Auth::user()->getId())->get();
+        $viewData["title"] = __('order.list.title');
+        $viewData["subtitle"] = __('order.list.subtitle');
+        $viewData["orders"] = Order::with(['items.computer'])->where('user_id', Auth::user()->getId())->get();
         return view('order.list')->with("viewData", $viewData);
     }
 }

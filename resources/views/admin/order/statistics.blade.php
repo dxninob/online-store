@@ -1,15 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 ms-auto">
-      <p class="lead"><b>Total de ordenes:</b> {{ $viewData["totalOfOrders"] }}</p>
-      <p class="lead"><b>Total vendido:</b> ${{ $viewData["totalSold"] }}</p>
-    </div>
-    <div class="col-lg-4 ms-auto">
-      <p class="lead"><b>Precio promedio:</b> ${{ $viewData["averagePrice"] }}</p>
-      <p class="lead"><b>Número de categorias:</b> ${{ $viewData["totalCategories"] }}</p>
+<div class="card mb-4">
+  <div class="card-header">
+    {{ __('admin.order.statistics.view') }}
+  </div>
+  <div class="card-body">
+    @if($errors->any())
+    <ul class="alert alert-danger list-unstyled">
+      @foreach($errors->all() as $error)
+      <li>- {{ $error }}</li>
+      @endforeach
+    </ul>
+    @endif
+
+    <div class="row">
+      <div class="col">
+        <div class="mb-3 row">
+          <p class="lead"><b>{{ __('admin.order.statistics.totalOrders') }}:</b> {{ $viewData["totalOfOrders"] }}</p>
+          <p class="lead"><b>{{ __('admin.order.statistics.totalSold') }}:</b> ${{ $viewData["totalSold"] }}</p>
+          <p class="lead"><b>{{ __('admin.order.statistics.avgPrice') }}:</b> ${{ $viewData["averagePrice"] }}</p>
+          <p class="lead"><b>{{ __('admin.order.statistics.numCategories') }}:</b> {{ $viewData["totalCategories"] }}</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3 row">
+          <p class="lead"><b>{{ __('admin.order.statistics.computersCategory') }}:</b></p>
+          @foreach ($viewData['categories'] as $category)
+            <p class="lead">{{ $category->getName() }}: {{ $viewData["computers" . $category->getName()] }}</p>
+          @endforeach
+          </div>
+      </div>
     </div>
   </div>
 </div>

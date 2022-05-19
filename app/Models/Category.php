@@ -12,7 +12,7 @@ class Category extends Model
      * $this->attributes['id'] - int - contains the category primary key (id)
      * $this->attributes['name'] - string - contains the category name
      * $this->attributes['description'] - string - contains the category description
-     * $this->itemsComputerCategory - ComputerCategory[] - contains the associated ComputerCategory items
+     * $this->attributes['computers'] - Computer[] - contains the associated computers
      */
 
     protected $table = 'categories';
@@ -55,18 +55,18 @@ class Category extends Model
         $this->attributes['description'] = $description;
     }
 
-    public function itemsComputerCategory()
+    public function computers()
     {
         return $this->belongsToMany(Computer::class, 'computer_category');
     }
 
-    public function getItemsComputerCategory()
+    public function getComputers()
     {
-        return $this->itemsComputerCategory;
+        return $this->computers;
     }
 
-    public function setItemsComputerCategory($itemsComputerCategory)
+    public function setComputers($computers)
     {
-        $this->itemsComputerCategory = $itemsComputerCategory;
+        $this->computers = $computers;
     }
 }

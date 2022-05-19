@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
 use App\Models\Computer;
 
-class OrderComputer extends Model
+class Item extends Model
 {
     /**
-     * ORDERCOMPUTER ATTRIBUTES
+     * ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['quantity'] - int - contains the item quantity
      * $this->attributes['price'] - int - contains the item price
@@ -21,7 +21,7 @@ class OrderComputer extends Model
      * $this->computer - Computer - contains the associated Computer
      */
 
-    protected $table = 'order_computer';
+    protected $table = 'items';
 
     public static function validate($request)
     {

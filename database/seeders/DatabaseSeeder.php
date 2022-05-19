@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Models\Computer;
 use App\Models\User;
 use App\Models\Category;
-use App\Models\ComputerCategory;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,16 +21,18 @@ class DatabaseSeeder extends Seeder
     {
         function import_CSV($filename, $delimiter = ',')
         {
-            if (!file_exists($filename) || !is_readable($filename))
+            if (!file_exists($filename) || !is_readable($filename)) {
                 return false;
+            }
             $header = null;
             $data = array();
             if (($handle = fopen($filename, 'r')) !== false) {
                 while (($row = fgetcsv($handle, 1000, $delimiter)) !== false) {
-                    if (!$header)
+                    if (!$header) {
                         $header = $row;
-                    else
+                    } else {
                         $data[] = array_combine($header, $row);
+                    }
                 }
                 fclose($handle);
             }
@@ -43,17 +44,17 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class]);
         $this->call([ComputerCategorySeeder::class]);
 
-        $computerFile = public_path("/seeders/computers" . ".csv");
-        $userFile = public_path("/seeders/users" . ".csv");
-        $categoryFile = public_path("/seeders/categories" . ".csv");
-        $computerCategoryFile = public_path("/seeders/computer_category" . ".csv");
+        $computerFile = resource_path("/seeders/computers" . ".csv");
+        $userFile = resource_path("/seeders/users" . ".csv");
+        $categoryFile = resource_path("/seeders/categories" . ".csv");
+        $computerCategoryFile = resource_path("/seeders/computer_category" . ".csv");
 
         $computerRecords = import_CSV($computerFile);
         $userRecords = import_CSV($userFile);
         $categoryRecords = import_CSV($categoryFile);
         $computerCategoryRecords = import_CSV($computerCategoryFile);
 
-        // add each record to the posts table in DB       
+        // add each record to the posts table in DB
         foreach ($computerRecords as $key => $record) {
             Computer::create([
                 'name' => $record['name'],
@@ -84,7 +85,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($computerCategoryRecords as $key => $record) {
-            ComputerCategory::create([
+            DB::table('computer_category')->insert([
                 'category_id' => $record['category_id'],
                 'computer_id' => $record['computer_id'],
             ]);

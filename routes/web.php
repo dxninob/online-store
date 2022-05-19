@@ -22,6 +22,13 @@ Route::get('/order', 'App\Http\Controllers\OrderController@index')->name("order.
 Route::get('/order/delete', 'App\Http\Controllers\OrderController@delete')->name("order.delete");
 Route::post('/order/add/{id}', 'App\Http\Controllers\OrderController@add')->name("order.add");
 
+Route::get('lang/{lang}', 'App\Http\Controllers\LanguageController@swap')->name('lang.swap');
+
+Route::post('/pdf/download/{id}', 'App\Http\Controllers\PDFController@download')->name("pdf.download");
+
+Route::get('/phones', 'App\Http\Controllers\PhoneController@index')->name("phone.index");
+Route::get('/phones/{id}', 'App\Http\Controllers\PhoneController@show')->name("phone.show");
+
 Route::middleware('auth')->group(function () {
     Route::get('/order/purchase', 'App\Http\Controllers\OrderController@purchase')->name("order.purchase");
     Route::get('/my-orders', 'App\Http\Controllers\OrderController@list')->name("order.list");

@@ -12,7 +12,7 @@ class AdminCategoryController extends Controller
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Categories - Online Store";
+        $viewData["title"] = __('admin.category.index.title');
         $viewData["categories"] = Category::all();
         return view('admin.category.index')->with("viewData", $viewData);
     }
@@ -38,7 +38,7 @@ class AdminCategoryController extends Controller
     public function edit($id)
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Edit Category - Online Store";
+        $viewData["title"] = __('admin.category.edit.title');
         $viewData["category"] = Category::findOrFail($id);
         return view('admin.category.edit')->with("viewData", $viewData);
     }

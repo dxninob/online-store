@@ -4,16 +4,16 @@
 @section('content')
 <div class="card">
   <div class="card-header">
-    Computers in Order
+    {{ __('order.index.inOrder') }}
   </div>
   <div class="card-body">
     <table class="table table-bordered table-striped text-center">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
+          <th scope="col">{{ __('order.id') }}</th>
+          <th scope="col">{{ __('order.name') }}</th>
+          <th scope="col">{{ __('order.price') }}</th>
+          <th scope="col">{{ __('order.quantity') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -29,12 +29,12 @@
     </table>
     <div class="row">
       <div class="text-end">
-        <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{ $viewData["total"] }}</a>
+        <a class="btn btn-outline-secondary mb-2"><b>{{ __('order.index.totalPay') }}</b> ${{ $viewData["total"] }}</a>
         @if (count($viewData["computers"]) > 0)
-        <a href="{{ route('order.purchase') }}" class="btn bg-primary text-white mb-2">Purchase</a>
+        <a href="{{ route('order.purchase') }}" class="btn bg-primary text-white mb-2">{{ __('order.index.purchase') }}</a>
         <a href="{{ route('order.delete') }}">
           <button class="btn btn-danger mb-2">
-            Remove all computers from Order
+            {{ __('order.index.removeAll') }}
           </button>
         </a>
         @endif

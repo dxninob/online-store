@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Computer;
 use App\Models\Category;
-use App\Models\ComputerCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +13,7 @@ class AdminComputerController extends Controller
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Computers - Online Store";
+        $viewData["title"] = __('admin.computer.index.title');
         $viewData["computers"] = Computer::all();
         $viewData["categories"] = Category::all();
         return view('admin.computer.index')->with("viewData", $viewData);
@@ -39,18 +38,18 @@ class AdminComputerController extends Controller
             $newComputer->setImage($imageName);
             $request->image->move(public_path('images'), $imageName);
         }
-
         $newComputer->save();
 
         $categories = $request->input('categories');
-        $newComputerId = $newComputer->getId();
-        foreach ($categories as $category) {
-            $item = new ComputerCategory();
-            $categoryIds = Category::where('name', $category)->get('id');
-            $item->setCategoryId($categoryIds[0]->id);
-            $item->setComputerId($newComputerId);
-            $item->save();
+
+        if (is_array($categories)) {
+            foreach ($categories as $category) {
+                $categoryId = Category::where('name', $category)->get('id');
+                $newComputer->categories()->attach($categoryId);
+            }
         }
+        
+        $newComputer->save();
 
         return back();
     }
@@ -64,9 +63,10 @@ class AdminComputerController extends Controller
     public function edit($id)
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Edit Computer - Online Store";
+        $viewData["title"] = __('admin.computer.edit.title');
         $viewData["computer"] = Computer::findOrFail($id);
         $viewData["categories"] = Category::all();
+        $viewData["categoryNames"] = $viewData["computer"]->getCategories()->pluck('name')->toArray();
 
         return view('admin.computer.edit')->with("viewData", $viewData);
     }
@@ -89,18 +89,24 @@ class AdminComputerController extends Controller
             $computer->setImage($imageName);
             $request->image->move(public_path('images'), $imageName);
         }
-
         $computer->save();
 
-        $categories = $request->input('categories');
-        $newComputerId = $computer->getId();
-        foreach ($categories as $category) {
-            $item = new ComputerCategory();
-            $categoryIds = Category::where('name', $category)->get('id');
-            $item->setCategoryId($categoryIds[0]->id);
-            $item->setComputerId($newComputerId);
-            $item->save();
+        $allCategories = Category::all();
+        foreach ($allCategories as $category) {
+            $categoryId = $category->getId();
+            $computer->categories()->detach($categoryId);
         }
+
+        $categories = $request->input('categories');
+
+        if (is_array($categories)) {
+            foreach ($categories as $category) {
+                $categoryId = Category::where('name', $category)->get('id');
+                $computer->categories()->attach($categoryId);
+            }
+        }
+        $computer->save();
+
         return redirect()->route('admin.computer.index');
     }
 }

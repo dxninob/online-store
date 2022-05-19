@@ -12,13 +12,13 @@
         <h5 class="card-title">
           {{ $viewData["computer"]->getName() }} (${{ $viewData["computer"]->getPrice() }})
         </h5>
-        <p class="card-text">CPU: {{ $viewData["computer"]->getCpu() }}</p>
-        <p class="card-text">RAM: {{ $viewData["computer"]->getRam() }} GB</p>
-        <p class="card-text">GPU: {{ $viewData["computer"]->getGpu() }}</p>
-        <p class="card-text">Storage: {{ $viewData["computer"]->getStorage() }} GB</p>
+        <p class="card-text">{{ __('computer.cpu') }}: {{ $viewData["computer"]->getCpu() }}</p>
+        <p class="card-text">{{ __('computer.ram') }}: {{ $viewData["computer"]->getRam() }} GB</p>
+        <p class="card-text">{{ __('computer.gpu') }}: {{ $viewData["computer"]->getGpu() }}</p>
+        <p class="card-text">{{ __('computer.storage') }}: {{ $viewData["computer"]->getStorage() }} GB</p>
 
-        <p>Categorias:</p>
-        @foreach($viewData["computer"]->getItemsComputerCategory() as $category)
+        <p>{{ __('computer.categories') }}:</p>
+        @foreach($viewData["computer"]->getCategories() as $category)
         <p>- {{ $category->getName() }}</p>
         @endforeach
 
@@ -28,16 +28,16 @@
             @csrf
             <div class="col-auto">
               <div class="input-group col-auto">
-                <div class="input-group-text">Quantity</div>
+                <div class="input-group-text">{{ __('computer.show.quantity') }}</div>
                 <input type="number" min="1" max="10" class="form-control quantity-input" name="quantity" value="1">
               </div>
             </div>
             <div class="col-auto">
-              <button class="btn bg-primary text-white" type="submit">Add to order</button>
+              <button class="btn bg-primary text-white" type="submit">{{ __('computer.show.addToOrder') }}</button>
             </div>
           </div>
         </form>
-        <br><a class="btn bg-primary text-white" href="https://api.whatsapp.com/send?text={{ $viewData['shareText'] }}{{ route('computer.show', ['id'=> $viewData['computer']->getId()]) }}">Compartir en Whatsapp</a>
+        <br><a class="btn bg-primary text-white" href="https://api.whatsapp.com/send?text={{ $viewData['shareText'] }}{{ route('computer.show', ['id'=> $viewData['computer']->getId()]) }}">{{ __('computer.show.share') }}</a>
         </p>
       </div>
     </div>
