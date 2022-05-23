@@ -27,7 +27,6 @@ class LocaleMiddleware
         if (config('locale.status')) {
             if (session()->has('locale') &&
                 in_array(session()->get('locale'), array_keys(config('locale.languages')))) {
-
                 /*
                  * Establece el locale de Laravel
                  */

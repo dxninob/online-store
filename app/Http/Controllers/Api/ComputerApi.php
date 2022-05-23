@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Resources\ComputerCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Computer;

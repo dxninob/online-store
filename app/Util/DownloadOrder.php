@@ -17,5 +17,4 @@ class DownloadOrder implements DownloadPDF
         $pdf = PDF::loadView('pdf.order', ['order' => $order]);
         return $pdf->download('Order ' . $id . '.pdf');
     }
-
 }

@@ -26,10 +26,10 @@ class ComputerController extends Controller
         if ($sort == "") {
             $orderItem = "id";
             $order = "asc";
-        } else if ($sort == "1") {
+        } elseif ($sort == "1") {
             $orderItem = "price";
             $order = "asc";
-        } else if ($sort == "2") {
+        } elseif ($sort == "2") {
             $orderItem = "price";
             $order = "desc";
         }
@@ -41,7 +41,7 @@ class ComputerController extends Controller
             $viewData["category"] = Category::findOrFail($category);
             $viewData["description"] = $viewData["category"]->getDescription();
             
-            $viewData["computers"] = Computer::whereHas('categories', function($q) use($category){
+            $viewData["computers"] = Computer::whereHas('categories', function ($q) use ($category) {
                 $q->where('category_id', $category);
             })->orderBy($orderItem, $order)->get();
         }

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
-
 
 class PhoneController extends Controller
 {
@@ -19,7 +19,8 @@ class PhoneController extends Controller
         return view('phone.index', compact('phones'))->with("viewData", $viewData);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $viewData = [];
         $viewData["title"] = __('phone.show.title');
         $viewData["subtitle"] = __('phone.show.subtitle');
