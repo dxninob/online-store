@@ -12,7 +12,7 @@ class ComputerCollection extends ResourceCollection
             'data' => $this->collection,
             'additionalData' => [
                 'storeName' => 'SDJ Store',
-                'storeComputersLink' => 'http://127.0.0.1:8000/computers',
+                'storeComputersLink' => 'http://computerstore.tk/public/computers',
             ],
         ];
     }
